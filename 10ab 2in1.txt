@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHP</title>
+</head>
+
+<body>
+    <h1>Check for Prime</h1>
+    <form action="" method="POST">
+        <input type="number" name="number" />
+        <input type="submit">
+    </form>
+    <?php
+    function isPrime($number)
+    {
+        for ($i = 2; $i <= sqrt($number); $i++) {
+            if ($number % $i == 0) {
+                return False;
+            }
+        }
+
+        return true;
+    }
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $number = $_POST['number'];
+        if (is_numeric($number) && $number >= 1) {
+            if (isPrime($number)) {
+                echo '<p>Number is Prime</p>';
+            } else {
+                echo '<p>Number is not a Prime</p>';
+            }
+        } else {
+            echo '<p>Enter a valid Number</p>';
+        }
+    } ?>
+    <p>Today's date</p>
+    <?php
+    echo date('d-m-Y');
+    echo "\n" . date('l');
+    ?>
+</body>
+
+</html>
